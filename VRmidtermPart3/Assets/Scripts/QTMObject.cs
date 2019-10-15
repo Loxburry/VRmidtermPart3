@@ -9,6 +9,7 @@ public class QTMObject : MonoBehaviour
 {
     public string objectName; // Name of the object as registered in the Qualisys system
     private RTClient rtClient;
+    //public float moveMult = 1f;
  
     void Start() {
         // Get a reference to the global Qualisys client object
@@ -24,8 +25,10 @@ public class QTMObject : MonoBehaviour
             // If this object has a position value, that means it's tracked!
             if (!float.IsNaN(trackedObj.Position.sqrMagnitude)) {
                 // Apply the position and rotation to the object
+                
                 transform.position = trackedObj.Position;
                 transform.rotation = trackedObj.Rotation;
+                Debug.Log(transform.position);
             }
         }
     }
